@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>ip信息展示</h1>
+    <table>
+    <tr>
+        <th>ip地址</th>
+        <th>访问地区</th>
+    </tr>
+    {% for line in ip_list %}
+    <tr>
+        <td>{{line.ip}}</td>
+        <td>{{line.area}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+    <h1>ip统计</h1>
+    <table>
+    <tr>
+        <th>次数</th>
+        <th>访问地区</th>
+    </tr>
+    {% for line in tongji_list %}
+    <tr>
+        <td>{{line.count}}</td>
+        <td>{{line.area}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>

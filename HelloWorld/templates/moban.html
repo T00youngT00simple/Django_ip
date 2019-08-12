@@ -1,0 +1,39 @@
+
+{#单独字符串#}
+{{ a }}
+
+{#类的对象。通过 点属性 可以获取属性值#}
+{{ template.name }}
+
+{#字典类型的 直接取key对应的value#}
+{{ dic.name }}
+{#列表取值#}
+<div>
+{% for i in l %}
+    {{ i.0  }}:{{ i.1 }}    输出：a:a b:b c:c
+{% endfor %}
+</div>
+
+{# 取l中的第一个参数 #}
+{{ l.0 }}
+{# 取字典中key的值 #}
+{{ d.name }}
+{# 取对象的name属性 #}
+{{ person_list.0.name }}
+{# .操作只能调用不带参数的方法 #}
+{{ person_list.0.dream }}
+
+{#大段文字截取,剩余的文字用省略号#}
+{{ss|truncatechars:30}}      输出：簌簌衣襟落枣花，村南村北响缫车，牛衣古柳卖黄瓜。酒困路...
+{#列表中是字典取值#}
+<div>{{ list_dic.1.name }}:{{ list_dic.1.age }}</div> 输出：zzy:18
+{#计算文件大小#}
+{{ file_size|filesizeformat }}
+{#时间对象#}
+<div> {{ date|date:"Y:m:d H:i:s" }}</div>    输出：2018:03:29 21:29:54
+{#切片示例#}
+<div>{{ ss|slice:'2:8' }}</div>     输出：衣襟落枣花，
+{#求列表的长度#}
+<div>
+    {{ l|length }}
+</div>
