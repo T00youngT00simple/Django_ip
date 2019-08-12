@@ -70,7 +70,7 @@ return render(request, 'moban.html', {'template': p1,
                                              'file_size': file_size,
                                              'date': datetime.datetime.now()})
 ```
-![Image text](https://github.com/yguo18/CircleFollowButton/raw/master/T00youngT00simple/Django_ip/img/ip.png)
+![Image text](https://github.com/T00youngT00simple/Django_ip/raw/master/img/hello.png)
 ###### 2.3search_form以及post页面设计
 &emsp; 主要为Django处理表单时的get以及post操作
 ```html
@@ -98,6 +98,9 @@ def search_post(request):
         ctx['rlt'] = request.POST['q']
     return render(request,'post.html',ctx)
 ```
+
+![Image text](https://github.com/T00youngT00simple/Django_ip/raw/master/img/get.png)
+![Image text](https://github.com/T00youngT00simple/Django_ip/raw/master/img/post.png)
 ###### 2.4访问ip以及归属地区的获取
 2.4.1访问ip的获得
 &emsp;可有request.META中的HTTP_X_FORWARDED_FOR字段获得，得到用户访问ip后，可通过藉由requests库对免费接口http://ip.taobao.com/service/getIpInfo.php?ip= 发出请求，对返回的json进行解析后可获得访问ip的国家及地区，这系列逻辑在change_info,py文件中完成
@@ -120,6 +123,7 @@ def search_post(request):
         area = html['data']['country']+html['data']['region']+html['data']['city']
     return client_ip,area
 ```
+
 2.4.2数据库操作
 &emsp;针对访问ip以及地区做入库操作Userip，若访问地区第一次出现在VisitNumber中，做插入操作，count为1、不是第一次则将想对应字段count自加一。在文件uodateDB.py中完成。
 ```python
@@ -182,3 +186,5 @@ def search_post(request):
     tongji_list = VisitNumber.objects.all()
     return render(request, 'ip.html', {"ip_list":ip_list,"tongji_list":tongji_list})
 ```
+
+![Image text](https://github.com/T00youngT00simple/Django_ip/raw/master/img/ipshow.png)
